@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="XamarinApp.MainPage"
+             xmlns:local="clr-namespace:XamarinApp;assembly=XamarinApp"
+             xmlns:behavior="clr-namespace:XamarinApp.Behavior;assembly=XamarinApp">
+
+    <StackLayout>
+        <StackLayout>
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Start">
+                
+                <Image x:Name="ImgBanner" Source="{local:ImageResource XamarinApp.Images.banner-bg2.jpg}" ></Image>
+
+                <Label Margin="0,10" Text="Xamarin Form And Firebase" FontAttributes="Bold" FontSize="Title" TextColor="Gray" HorizontalTextAlignment="Center" ></Label>
+                
+                <Entry x:Name="TxtName" Placeholder="Full Name (Required)"></Entry>
+
+                <Entry x:Name="TxtPhone" Placeholder="Phone (Required)" Keyboard="Numeric" >
+                    <Entry.Behaviors>
+                        <behavior:MaskedBehavior Mask="(XXX) XXX-XXXX" />
+                    </Entry.Behaviors>
+                </Entry>
+
+                <StackLayout  HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                    <Button x:Name="BtnAdd" WidthRequest="200" Text="Add" Clicked="BtnAdd_Clicked"/>
+                    <Button x:Name="BtnDelete" WidthRequest="200" Text="Delete" Clicked="BtnDelete_Clicked" />
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                    <Button x:Name="BtnUpdate" WidthRequest="200" Text="Update" Clicked="BtnUpdate_Clicked" />
+                </StackLayout>
+
+                <ListView x:Name="LstPersons" ItemSelected="LstPersons_OnItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Name}"></TextCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>
